@@ -6,3 +6,11 @@ This is a Puppet based repository for generic automation configurations. The int
 I'm going to have a mirror of this repository using Ansible as the configuration management provider. I'd prefer to use that rather than Puppet, but I'm also going to maintain this repository, because for the time being, I need to use Puppet at work.
 
 Why Red Arrow? It's a place from Vernor Vinge's first novel, 'The Peace War'. It's where the 'tinkers' built their equipment to rebel against 'The Peace Authority'. OK, so it doesn't quite fit with the theme, but I wanted something better than 'generic automation' :).
+
+Automated Configurations
+------------------------
+
+| Name                                | Description                          | OS     | OS Version | Provider |
+| ----------------------------------- | ------------------------------------ | ------ |:----------:|:--------:|
+| base\_box\_nocm-CentOS\_6.6-x86\_64 | Base box without Puppet installation | CentOS | 6.6        | vbox     |
+| base\_box\_nocm-CentOS\_7.0-x86\_64 | Base box without Puppet installation | CentOS | 7.0        | vbox     |
