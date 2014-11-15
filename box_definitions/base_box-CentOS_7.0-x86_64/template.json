@@ -1,0 +1,52 @@
+{
+  "builders": [
+    {
+      "type": "virtualbox-iso",
+      "boot_command": [
+        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
+      ],
+      "boot_wait": "10s",
+      "disk_size": 10140,
+      "guest_os_type": "RedHat_64",
+      "http_directory": "http",
+      "iso_checksum": "e3afe3f1121d69c40cc23f0bafa05e5d",
+      "iso_checksum_type": "md5",
+      "iso_url": "CentOS-7.0-1406-x86_64-Minimal.iso",
+      "ssh_username": "vagrant",
+      "ssh_password": "vagrant",
+      "ssh_port": 22,
+      "ssh_wait_timeout": "10000s",
+      "shutdown_command": "echo '/sbin/halt -h -p' > shutdown.sh; echo 'vagrant' | sudo -S sh 'shutdown.sh'",
+      "guest_additions_url": "VBoxGuestAdditions_4.3.14_RC1.iso",
+      "guest_additions_path": "/tmp/VBoxGuestAdditions_4.3.14_RC1.iso",
+      "guest_additions_sha256": "8ef63de66170f1b88d0a42c0aff33bdf8365d502d9e70d598dbf6d4f32992de9",
+      "virtualbox_version_file": "/tmp/.vbox_version",
+      "vboxmanage": [
+        [ "modifyvm", "{{.Name}}", "--memory", "512" ],
+        [ "modifyvm", "{{.Name}}", "--cpus", "1" ]
+      ]
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "vagrant",
+      "compression_level": 1
+    }
+  ],
+  "provisioners": [
+    {
+      "override": {
+        "virtualbox-iso": {
+          "execute_command": "echo 'vagrant' | {{ .Vars }} sudo -E -S sh '{{.Path}}'"
+        }
+      },
+      "type": "shell",
+      "scripts": [
+        "../../sh/setup_epel_7_repository-RHEL.sh",
+        "../../sh/authorize_vagrant_public_key.sh",
+        "../../sh/install_vbox_guest_additions-CentOS_7.0.sh",
+        "../../sh/install_puppet-CentOS_7.0.sh"
+      ]
+    }
+  ]
+}
