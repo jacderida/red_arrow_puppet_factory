@@ -10,8 +10,9 @@ Why Red Arrow? It's a place from Vernor Vinge's first novel, 'The Peace War'. It
 Automated Configurations
 ------------------------
 
-| Name                                     | Description                           | OS     | OS Version   | Provider   |
-| ---------------------------------------- | ------------------------------------- | ------ | :----------: | :--------: |
-| base\_box\_nocm-vbox-CentOS\_6.6-x86\_64 | Base box without Puppet installation. | CentOS | 6.6          | vbox       |
-| base\_box\_nocm-vbox-CentOS\_7.0-x86\_64 | Base box without Puppet installation. | CentOS | 7.0          | vbox       |
-| base\_box-vbox-CentOS\_7.0-x86\_64       | Base box with Puppet installed.       | CentOS | 7.0          | vbox       |
+| Name                                       | Description                           | OS     | OS Version   | Provider   |
+| ------------------------------------------ | ------------------------------------- | ------ | :----------: | :--------: |
+| base\_box\_nocm-vbox-CentOS\_6.6-x86\_64   | Base box without Puppet installation. | CentOS | 6.6          | vbox       |
+| base\_box\_nocm-vbox-CentOS\_7.0-x86\_64   | Base box without Puppet installation. | CentOS | 7.0          | vbox       |
+| base\_box\_nocm-vbox-Ubuntu\_12.04-x86\_64 | Base box without Puppet installation. | Ubuntu | 12.04        | vbox       |
+| base\_box-vbox-CentOS\_7.0-x86\_64         | Base box with Puppet installed.       | CentOS | 7.0          | vbox       |
