@@ -1,0 +1,56 @@
+{
+  "builders": [
+    {
+      "type": "virtualbox-iso",
+      "boot_command": [
+        "<esc><esc><enter><wait>",
+        "/install/vmlinuz noapic preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg <wait>",
+        "debian-installer=en_GB auto locale=en_GB kbd-chooser/method=uk <wait>",
+        "hostname=base-box-nocm-Ubuntu-12-04-x86-64 <wait>",
+        "fb=false debconf/frontend=noninteractive <wait>",
+        "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=uk keyboard-configuration/variant=uk console-setup/ask_detect=false <wait>",
+        "initrd=/install/initrd.gz -- <enter><wait>"
+      ],
+      "boot_wait": "4s",
+      "disk_size": 65536,
+      "guest_os_type": "Ubuntu_64",
+      "http_directory": "http",
+      "iso_checksum": "769474248a3897f4865817446f9a4a53",
+      "iso_checksum_type": "md5",
+      "iso_url": "ubuntu-12.04.5-server-amd64.iso",
+      "ssh_username": "vagrant",
+      "ssh_password": "vagrant",
+      "ssh_port": 22,
+      "ssh_wait_timeout": "10000s",
+      "shutdown_command": "echo 'shutdown -P now' > shutdown.sh; echo 'vagrant' | sudo -S sh 'shutdown.sh'",
+      "guest_additions_path": "/tmp/VBoxGuestAdditions_{{.Version}}.iso",
+      "virtualbox_version_file": "/tmp/.vbox_version",
+      "vboxmanage": [
+        [ "modifyvm", "{{.Name}}", "--memory", "512" ],
+        [ "modifyvm", "{{.Name}}", "--cpus", "1" ]
+      ]
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "vagrant",
+      "compression_level": 1
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "override": {
+        "virtualbox-iso": {
+          "execute_command": "echo 'vagrant' | sudo -S sh '{{.Path}}'"
+        }
+      },
+      "scripts": [
+        "../../sh/init_debian.sh",
+        "../../sh/authorize_vagrant_public_key-Debian.sh",
+        "../../sh/install_vbox_guest_additions-Debian.sh",
+        "../../sh/cleanup-Debian.sh"
+      ]
+    }
+  ]
+}
