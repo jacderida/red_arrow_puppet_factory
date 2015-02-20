@@ -16,3 +16,4 @@ Automated Configurations
 | base\_box\_nocm-vbox-CentOS\_7.0-x86\_64   | Base box without Puppet installation. | CentOS | 7.0          | vbox       |
 | base\_box\_nocm-vbox-Ubuntu\_12.04-x86\_64 | Base box without Puppet installation. | Ubuntu | 12.04        | vbox       |
 | base\_box-vbox-CentOS\_7.0-x86\_64         | Base box with Puppet installed.       | CentOS | 7.0          | vbox       |
+| base\_box-vbox-Ubuntu\_12.04-x86\_64       | Base box with Puppet installed.       | Ubuntu | 12.04        | vbox       |
